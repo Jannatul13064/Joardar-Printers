@@ -23,7 +23,7 @@ export default function Navbar() {
         </h1>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8 font-medium">
+        <div className="text-white hidden md:flex gap-8 font-medium">
           <a href="#home" className="hover:text-red-600">
             Home
           </a>
@@ -42,7 +42,10 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Button */}
-        <button className="md:hidden text-2xl" onClick={() => setOpen(!open)}>
+        <button
+          className="md:hidden text-2xl text-white"
+          onClick={() => setOpen(!open)}
+        >
           {open ? <FaTimes /> : <FaBars />}
         </button>
       </div>
