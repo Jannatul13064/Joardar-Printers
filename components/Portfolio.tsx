@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import { FaSearchPlus } from "react-icons/fa";
 
 const portfolioItems = [
-  { id: 1, src: "/design1.jpg", title: "Luxury Box" },
-  { id: 2, src: "/design2.jpg", title: "Eco Packaging" },
-  { id: 3, src: "/design3.jpg", title: "Creative Labels" },
-  { id: 4, src: "/design4.jpg", title: "Custom Printing" },
-  { id: 5, src: "/design5.jpg", title: "Gift Packaging" },
-  { id: 6, src: "/design6.jpg", title: "Branded Boxes" },
+  { id: 1, src: "/pack/design1.jpg", title: "Luxury Box" },
+  { id: 2, src: "/pack/design2.jpg", title: "Eco Packaging" },
+  { id: 3, src: "/pack/design1.jpg", title: "Creative Labels" },
+  { id: 4, src: "/pack/design1.jpg", title: "Custom Printing" },
+  { id: 5, src: "/pack/design1.jpg", title: "Gift Packaging" },
+  { id: 6, src: "/pack/design1.jpg", title: "Branded Boxes" },
 ];
 
 export default function Portfolio() {

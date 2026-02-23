@@ -17,7 +17,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <h1 className="text-xl md:text-2xl font-bold text-red-600">
-          Joardar Printers
+          <a href="/" className="hover:text-red-600">
+            Joardar Printers
+          </a>
         </h1>
 
         {/* Desktop Menu */}
