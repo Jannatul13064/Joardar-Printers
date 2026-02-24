@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaBoxOpen, FaPrint, FaTags, FaAward } from "react-icons/fa";
@@ -12,41 +11,17 @@ export default function About() {
     { icon: <FaAward />, label: "Years Experience", value: "10+" },
   ];
 
-  const services = [
-    { name: "Custom Packaging", detail: "Premium custom boxes for all brands" },
-    { name: "Offset Printing", detail: "High-quality large-scale printing" },
-    { name: "Label Design", detail: "Creative and durable product labels" },
-    {
-      name: "Brand Identity",
-      detail: "Complete branding & printing solutions",
-    },
-  ];
-
   return (
     <section
       id="about"
       className="relative py-24 overflow-hidden px-6 md:px-12"
     >
-      {/* Decorative Background Blurs */}
-      <motion.div
-        className="absolute top-0 left-0 w-72 h-72 bg-red-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1.2 }}
-        transition={{ duration: 10, repeat: Infinity, repeatType: "mirror" }}
-      />
-      <motion.div
-        className="absolute bottom-0 right-0 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1.2 }}
-        transition={{ duration: 12, repeat: Infinity, repeatType: "mirror" }}
-      />
-
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
         {/* Image */}
         <motion.div
           initial={{ opacity: 0, x: -80, scale: 0.9 }}
           whileInView={{ opacity: 1, x: 0, scale: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 1 }}
           viewport={{ once: true }}
           whileHover={{ scale: 1.05 }}
           className="rounded-xl shadow-2xl overflow-hidden"
@@ -64,7 +39,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, x: 80 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6 text-white">
@@ -78,7 +53,7 @@ export default function About() {
             beautiful and professional packaging.
           </p>
 
-          {/* Stats with Icons */}
+          {/* Stats */}
           <div className="grid grid-cols-2 gap-4 mb-8">
             {stats.map((stat, index) => (
               <motion.div

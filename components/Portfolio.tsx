@@ -29,16 +29,21 @@ export default function Portfolio() {
           visible: { transition: { staggerChildren: 0.15 } },
         }}
       >
-        {portfolioItems.map((item, index) => (
+        {portfolioItems.map((item) => (
           <motion.div
             key={item.id}
             className="relative rounded-3xl overflow-hidden shadow-2xl cursor-pointer group"
             variants={{
-              hidden: { opacity: 0, y: 60, scale: 0.95 },
-              visible: { opacity: 1, y: 0, scale: 1 },
+              hidden: { opacity: 0, y: 60, scale: 0.9, rotate: -2 },
+              visible: { opacity: 1, y: 0, scale: 1, rotate: 0 },
             }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{
+              scale: 1.1,
+              rotate: [0, -5, 5, 0], // playful tilt animation
+              y: [0, -10, 5, 0], // slight bounce
+              transition: { duration: 0.6, ease: "easeInOut" },
+            }}
           >
             {/* Image */}
             <Image
@@ -49,19 +54,19 @@ export default function Portfolio() {
               className="w-full h-auto object-cover rounded-3xl"
             />
 
-            {/* Hover overlay with icon */}
+            {/* Cartoon hover overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               whileHover={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"
+              className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col items-center justify-center gap-2"
             >
               <motion.div
-                whileHover={{ scale: 1.2, rotate: 10 }}
+                whileHover={{ scale: 1.3, rotate: [0, 15, -15, 0] }}
                 className="flex flex-col items-center gap-2"
               >
                 <FaSearchPlus className="text-white text-3xl sm:text-4xl" />
-                <p className="text-white text-lg sm:text-xl font-semibold text-center">
+                <p className="text-white text-lg sm:text-xl font-bold text-center">
                   {item.title}
                 </p>
               </motion.div>

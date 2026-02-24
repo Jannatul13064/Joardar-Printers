@@ -29,7 +29,7 @@ export default function Contact() {
           <input
             type="text"
             placeholder="Your Name"
-            className="w-full border border-gray-300 rounded-lg p-4 pl-12 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all duration-300"
+            className="w-full border border-gray-300 rounded-lg p-4 pl-12 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all duration-300 placeholder-white"
           />
         </div>
 
@@ -39,7 +39,7 @@ export default function Contact() {
           <input
             type="email"
             placeholder="Your Email"
-            className="w-full border border-gray-300 rounded-lg p-4 pl-12 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all duration-300"
+            className="w-full border border-gray-300 rounded-lg p-4 pl-12 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all duration-300 placeholder-white"
           />
         </div>
 
@@ -48,7 +48,7 @@ export default function Contact() {
           <FaComment className="absolute top-4 left-4 text-gray-400" />
           <textarea
             placeholder="Your Message"
-            className="w-full border border-gray-300 rounded-lg p-4 pt-6 pl-12 h-32 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all duration-300 resize-none"
+            className="w-full border border-gray-300 rounded-lg p-4 pt-6 pl-12 h-32 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all duration-300 resize-none placeholder-white"
           />
         </div>
 
