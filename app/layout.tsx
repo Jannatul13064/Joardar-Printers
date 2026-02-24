@@ -1,3 +1,4 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Poppins, Playfair_Display } from "next/font/google";
 import "./globals.css";
@@ -18,6 +19,28 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Joardar Printers",
   description: "Premium Packaging & Printing Solutions",
+  openGraph: {
+    title: "Joardar Printers",
+    description: "Premium Packaging & Printing Solutions",
+    url: "https://yourdomain.com", // replace with your site
+    siteName: "Joardar Printers",
+    images: [
+      {
+        url: "https://yourdomain.com/images/thumbnail.jpg", // your thumbnail
+        width: 1200,
+        height: 630,
+        alt: "Joardar Printers Thumbnail",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Joardar Printers",
+    description: "Premium Packaging & Printing Solutions",
+    images: ["https://joardar-printers.vercel.app/thumbnail.jpg"],
+  },
 };
 
 export default function RootLayout({
