@@ -22,11 +22,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Joardar Printers",
     description: "Premium Packaging & Printing Solutions",
-    url: "https://yourdomain.com", // replace with your site
+    url: "https://joardar-printers.vercel.app/", // replace with your site
     siteName: "Joardar Printers",
     images: [
       {
-        url: "https://yourdomain.com/images/thumbnail.jpg", // your thumbnail
+        url: "https://joardar-printers.vercel.app/thumbnail.png", // your thumbnail
         width: 1200,
         height: 630,
         alt: "Joardar Printers Thumbnail",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Joardar Printers",
     description: "Premium Packaging & Printing Solutions",
-    images: ["https://joardar-printers.vercel.app/thumbnail.jpg"],
+    images: ["https://joardar-printers.vercel.app/thumbnail.png"],
   },
 };
 
