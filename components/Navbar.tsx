@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -17,28 +18,28 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <h1 className="text-xl md:text-2xl font-bold text-red-600">
-          <a href="/" className="hover:text-red-600">
+          <Link href="/" className="hover:text-red-600">
             Joardar Printers
-          </a>
+          </Link>
         </h1>
 
         {/* Desktop Menu */}
         <div className="text-white hidden md:flex gap-8 font-medium">
-          <a href="#home" className="hover:text-red-600">
+          <Link href="#home" className="hover:text-red-600">
             Home
-          </a>
-          <a href="#about" className="hover:text-red-600">
+          </Link>
+          <Link href="#about" className="hover:text-red-600">
             About
-          </a>
-          <a href="#services" className="hover:text-red-600">
+          </Link>
+          <Link href="#services" className="hover:text-red-600">
             Services
-          </a>
-          <a href="#portfolio" className="hover:text-red-600">
+          </Link>
+          <Link href="#portfolio" className="hover:text-red-600">
             Portfolio
-          </a>
-          <a href="#contact" className="hover:text-red-600">
+          </Link>
+          <Link href="#contact" className="hover:text-red-600">
             Contact
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Button */}
@@ -60,21 +61,41 @@ export default function Navbar() {
             className="md:hidden bg-white shadow-md"
           >
             <div className="flex flex-col items-center gap-4 py-6 font-medium">
-              <a href="#home" onClick={() => setOpen(false)}>
+              <Link
+                href="#home"
+                className="text-black hover:text-red-600"
+                onClick={() => setOpen(false)}
+              >
                 Home
-              </a>
-              <a href="#about" onClick={() => setOpen(false)}>
+              </Link>
+              <Link
+                href="#about"
+                className="text-black hover:text-red-600"
+                onClick={() => setOpen(false)}
+              >
                 About
-              </a>
-              <a href="#services" onClick={() => setOpen(false)}>
+              </Link>
+              <Link
+                href="#services"
+                className="text-black hover:text-red-600"
+                onClick={() => setOpen(false)}
+              >
                 Services
-              </a>
-              <a href="#portfolio" onClick={() => setOpen(false)}>
+              </Link>
+              <Link
+                href="#portfolio"
+                className="text-black hover:text-red-600"
+                onClick={() => setOpen(false)}
+              >
                 Portfolio
-              </a>
-              <a href="#contact" onClick={() => setOpen(false)}>
+              </Link>
+              <Link
+                href="#contact"
+                className="text-black hover:text-red-600"
+                onClick={() => setOpen(false)}
+              >
                 Contact
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}
