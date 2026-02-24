@@ -46,7 +46,7 @@ export default function About() {
             About Joardar Printers
           </h2>
 
-          <p className="text-gray-600 text-base sm:text-lg mb-6 leading-relaxed">
+          <p className="text-gray-300 text-base sm:text-lg mb-6 leading-relaxed">
             Joardar Printers is a leading packaging and printing company
             delivering premium-quality solutions. We combine modern printing
             technology with creative design to help brands stand out with

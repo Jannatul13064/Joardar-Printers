@@ -49,7 +49,7 @@ export default function Hero() {
             Premium Packaging & Printing
           </h1>
 
-          <p className="text-gray-600 text-base sm:text-lg lg:text-xl mb-6">
+          <p className="text-gray-300 text-base sm:text-lg lg:text-xl mb-6">
             High-quality packaging solutions that make your brand stand out.
             From creative designs to precise printing, we deliver excellence.
           </p>
