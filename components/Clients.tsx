@@ -10,6 +10,7 @@ export default function ClientSlider() {
     "/clients/client3.png",
     "/clients/client4.png",
     "/clients/client5.png",
+    "/clients/client6.jpg",
   ];
 
   return (
