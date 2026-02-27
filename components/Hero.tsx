@@ -22,18 +22,23 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden px-6 md:px-12"
     >
+      {/* Preload the video */}
+      <link rel="preload" href="/hero.mp4" as="video" type="video/mp4" />
+
       {/* Background Video */}
       <video
         autoPlay
         loop
         muted
+        playsInline
+        preload="auto" // <--- Ensures video starts loading early
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
         <source src="/hero.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* Optional Overlay for readability */}
+      {/* Overlay for readability */}
       <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-0"></div>
 
       {/* Hero Content */}

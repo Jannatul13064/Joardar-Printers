@@ -6,11 +6,16 @@ import { FaUser, FaEnvelope, FaComment } from "react-icons/fa";
 export default function Contact() {
   return (
     <section id="contact" className="relative py-24 px-6 md:px-12">
+      {/* Preload video */}
+      <link rel="preload" href="/contact.mp4" as="video" type="video/mp4" />
+
       {/* Background Video */}
       <video
         autoPlay
         loop
         muted
+        playsInline
+        preload="auto" // preloads video
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
         <source src="/contact.mp4" type="video/mp4" />
