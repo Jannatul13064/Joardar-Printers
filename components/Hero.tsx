@@ -22,21 +22,21 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden px-6 md:px-12"
     >
-      {/* Background Circles */}
-      {/* <motion.div
-        className="absolute top-0 left-0 w-96 h-96 bg-red-200 rounded-full blur-3xl opacity-30"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1.2 }}
-        transition={{ duration: 8, repeat: Infinity, repeatType: "mirror" }}
-      /> */}
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+      >
+        <source src="/hero.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-      {/* <motion.div
-        className="absolute bottom-0 right-0 w-72 h-72 bg-yellow-200 rounded-full blur-3xl opacity-30"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1.2 }}
-        transition={{ duration: 10, repeat: Infinity, repeatType: "mirror" }}
-      /> */}
+      {/* Optional Overlay for readability */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-0"></div>
 
+      {/* Hero Content */}
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center relative z-10">
         {/* TEXT */}
         <motion.div
