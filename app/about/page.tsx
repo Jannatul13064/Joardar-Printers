@@ -64,7 +64,7 @@ export default function About() {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 viewport={{ once: true }}
               >
-                <div className="text-red-600 text-3xl">{stat.icon}</div>
+                <div className="text-blue-600 text-3xl">{stat.icon}</div>
                 <div>
                   <p className="text-lg font-semibold">{stat.value}</p>
                   <p className="text-gray-500 text-sm">{stat.label}</p>

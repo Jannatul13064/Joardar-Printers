@@ -40,7 +40,7 @@ export default function Footer() {
                   <li key={i}>
                     <a
                       href={`#${link.toLowerCase()}`}
-                      className="hover:text-red-500 transition-colors duration-200"
+                      className="hover:text-blue-500 transition-colors duration-200"
                     >
                       {link}
                     </a>
@@ -59,7 +59,7 @@ export default function Footer() {
                 <motion.div
                   key={i}
                   whileHover={{ scale: 1.2, rotate: 10 }}
-                  className="cursor-pointer text-gray-400 hover:text-red-500 transition duration-200"
+                  className="cursor-pointer text-gray-400 hover:text-blue-500 transition duration-200"
                 >
                   <Icon />
                 </motion.div>
@@ -77,10 +77,10 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Your Email"
-                className="w-full rounded-full py-2.5 pl-10 pr-4 text-white placeholder-white border border-white focus:outline-none focus:ring-1 focus:ring-red-500 transition duration-200"
+                className="w-full rounded-full py-2.5 pl-10 pr-4 text-white placeholder-white border border-white focus:outline-none focus:ring-1 focus:ring-blue-500 transition duration-200"
               />
             </div>
-            <button className="bg-red-600 hover:bg-red-700 px-5 rounded-full text-sm sm:text-base transition duration-200">
+            <button className="bg-blue-600 hover:bg-blue-700 px-5 rounded-full text-sm sm:text-base transition duration-200">
               Subscribe
             </button>
           </div>

@@ -50,7 +50,7 @@ export default function Contact() {
             <input
               type="text"
               placeholder="Your Name"
-              className="w-full border border-gray-300 rounded-lg p-4 pl-12 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all duration-300 placeholder-white"
+              className="w-full border border-gray-300 rounded-lg p-4 pl-12 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all duration-300 placeholder-white text-white"
             />
           </div>
 
@@ -60,7 +60,7 @@ export default function Contact() {
             <input
               type="email"
               placeholder="Your Email"
-              className="w-full border border-gray-300 rounded-lg p-4 pl-12 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all duration-300 placeholder-white"
+              className="text-white w-full border border-gray-300 rounded-lg p-4 pl-12 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all duration-300 placeholder-white"
             />
           </div>
 
@@ -69,12 +69,12 @@ export default function Contact() {
             <FaComment className="absolute top-4 left-4 text-gray-400" />
             <textarea
               placeholder="Your Message"
-              className="w-full border border-gray-300 rounded-lg p-4 pt-6 pl-12 h-32 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all duration-300 resize-none placeholder-white"
+              className="text-white w-full border border-gray-300 rounded-lg p-4 pt-6 pl-12 h-32 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all duration-300 resize-none placeholder-white"
             />
           </div>
 
           {/* Submit Button */}
-          <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-4 rounded-xl text-lg transition-all duration-300 shadow-lg hover:shadow-2xl">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 rounded-xl text-lg transition-all duration-300 shadow-lg hover:shadow-2xl">
             Send Message
           </button>
         </motion.form>

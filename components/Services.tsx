@@ -44,7 +44,7 @@ export default function Services() {
           >
             {/* Icon */}
             <motion.div
-              className="text-red-600 text-5xl mb-6"
+              className="text-blue-600 text-5xl mb-6"
               whileHover={{
                 rotate: [0, 15, -15, 0],
                 scale: [1, 1.3, 1.2, 1],

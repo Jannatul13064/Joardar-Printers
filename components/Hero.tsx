@@ -59,7 +59,7 @@ export default function Hero() {
             From creative designs to precise printing, we deliver excellence.
           </p>
 
-          <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl">
+          <button className="bg-blue-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl">
             Explore Designs
           </button>
         </motion.div>
