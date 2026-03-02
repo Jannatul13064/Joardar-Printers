@@ -18,7 +18,7 @@ export default function Contact() {
         preload="auto" // preloads video
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
-        <source src="/contact.mp4" type="video/mp4" />
+        <source src="/contact.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
 

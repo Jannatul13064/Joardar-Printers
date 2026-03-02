@@ -23,7 +23,7 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden px-6 md:px-12"
     >
       {/* Preload the video */}
-      <link rel="preload" href="/hero.mp4" as="video" type="video/mp4" />
+      <link rel="preload" href="/hero.webm" as="video" type="video/mp4" />
 
       {/* Background Video */}
       <video
@@ -34,7 +34,7 @@ export default function Hero() {
         preload="auto" // <--- Ensures video starts loading early
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
-        <source src="/hero.mp4" type="video/mp4" />
+        <source src="/hero.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
 
