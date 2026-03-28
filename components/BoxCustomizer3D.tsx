@@ -1,174 +1,215 @@
 "use client";
 
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useRef, useState, useMemo } from "react";
 import * as THREE from "three";
-import Lenis from "lenis";
 
 /* -----------------------------
-   LENIS SMOOTH SCROLL
+   TEXTURE WITH TEXT COLOR
 ----------------------------- */
-function useLenis() {
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.4,
-      easing: (t: number) => 1 - Math.pow(1 - t, 3),
-      smoothWheel: true,
-      lerp: 0.08,
-    });
+function useTextTexture(text: string, boxColor: string, textColor: string) {
+  return useMemo(() => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 1024;
+    canvas.height = 1024;
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+    const ctx = canvas.getContext("2d");
+
+    if (ctx) {
+      // Background (box color)
+      ctx.fillStyle = boxColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Main Text
+      ctx.fillStyle = textColor;
+      ctx.font = "bold 120px Arial";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+      // Subtitle
+      ctx.font = "40px Arial";
+      ctx.fillText(
+        "Premium Packaging",
+        canvas.width / 2,
+        canvas.height / 2 + 120,
+      );
     }
 
-    requestAnimationFrame(raf);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.needsUpdate = true;
 
-    return () => lenis.destroy();
-  }, []);
+    return texture;
+  }, [text, boxColor, textColor]);
 }
 
 /* -----------------------------
-   3D BOX
+   BOX
 ----------------------------- */
-function Box({ color }: { color: string }) {
+function Box({
+  width,
+  height,
+  depth,
+  boxColor,
+  text,
+  textColor,
+}: {
+  width: number;
+  height: number;
+  depth: number;
+  boxColor: string;
+  text: string;
+  textColor: string;
+}) {
   const ref = useRef<THREE.Mesh>(null);
 
+  const texture = useTextTexture(text, boxColor, textColor);
+
   useFrame(() => {
-    if (ref.current) {
-      ref.current.rotation.y += 0.003;
-      ref.current.rotation.x += 0.0015;
-    }
+    if (!ref.current) return;
+    ref.current.rotation.y += 0.002;
   });
 
   return (
     <mesh ref={ref}>
-      <boxGeometry args={[2, 2, 2]} />
-      <meshStandardMaterial color={color} />
+      <boxGeometry args={[width, height, depth]} />
+
+      <meshStandardMaterial map={texture} roughness={0.35} metalness={0.2} />
     </mesh>
   );
 }
 
 /* -----------------------------
-   CAMERA
------------------------------ */
-function CameraRig({ scroll }: { scroll: any }) {
-  const { camera } = useThree();
-
-  const x = useTransform(scroll, [0, 1], [-2, 2]);
-  const y = useTransform(scroll, [0, 1], [0, 1]);
-  const z = useTransform(scroll, [0, 1], [5, 3]);
-
-  useFrame(() => {
-    camera.position.x = x.get();
-    camera.position.y = y.get();
-    camera.position.z = z.get();
-    camera.lookAt(0, 0, 0);
-  });
-
-  return null;
-}
-
-/* -----------------------------
-   MAIN COMPONENT
+   MAIN
 ----------------------------- */
 export default function BoxCustomizer3D() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [width, setWidth] = useState(2);
+  const [height, setHeight] = useState(2);
+  const [depth, setDepth] = useState(2);
 
-  useLenis();
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-  });
-
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+  const [boxColor, setBoxColor] = useState("#6366f1");
+  const [text, setText] = useState("Custom Box");
+  const [textColor, setTextColor] = useState("#ffffff");
 
   return (
-    <div ref={containerRef} className="bg-black text-white">
-      {/* Scroll area */}
-      <div className="h-[400vh]">
-        <motion.div
-          className="sticky top-0 h-screen w-[400vw] flex"
-          style={{ x }}
-        >
-          <Section
-            name="01"
-            title="Custom Box"
-            subtitle="Design your perfect box"
-            color="#6366f1"
-          />
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-6">
+      <h1 className="text-3xl md:text-5xl font-semibold mb-6 text-center">
+        Box Customization
+      </h1>
 
-          <Section
-            name="02"
-            title="Gift Box"
-            subtitle="Make moments memorable"
-            color="#ec4899"
-          />
+      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        {/* CONTROLS */}
+        <div className="space-y-6">
+          {/* TEXT INPUT */}
+          <div>
+            <label className="text-sm text-white/50">Box Text</label>
+            <input
+              type="text"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              className="w-full mt-2 px-4 py-2 bg-white/10 rounded-lg outline-none"
+            />
+          </div>
 
-          <Section
-            name="03"
-            title="Premium Box"
-            subtitle="Luxury at its finest"
-            color="#10b981"
-          />
+          {/* TEXT COLOR */}
+          <div>
+            <p className="text-sm text-white/50 mb-3">Text Color</p>
 
-          <Section
-            name="04"
-            title="Build Your Own"
-            subtitle="Endless customization"
-            color="#f59e0b"
-          />
-        </motion.div>
-      </div>
-    </div>
-  );
-}
+            <div className="flex gap-3 flex-wrap">
+              {["#ffffff", "#000000", "#ff0000", "#00ffcc", "#facc15"].map(
+                (c) => (
+                  <button
+                    key={c}
+                    onClick={() => setTextColor(c)}
+                    className={`w-10 h-10 rounded-full border-2 ${
+                      textColor === c ? "border-white" : "border-transparent"
+                    }`}
+                    style={{ background: c }}
+                  />
+                ),
+              )}
+            </div>
+          </div>
 
-/* -----------------------------
-   RESPONSIVE SECTION
------------------------------ */
-function Section({
-  name,
-  title,
-  subtitle,
-  color,
-}: {
-  name: string;
-  title: string;
-  subtitle: string;
-  color: string;
-}) {
-  return (
-    <div className="w-screen h-screen flex items-center justify-center px-6 md:px-20 shrink-0">
-      {/* Responsive container */}
-      <div className="w-full max-w-7xl flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-        {/* TEXT */}
-        <div className="space-y-4 text-center md:text-left">
-          {/* SECTION LABEL */}
-          <p className="text-xs md:text-sm tracking-[0.4em] text-white/40 uppercase">
-            Section {name}
-          </p>
+          {/* BOX COLOR */}
+          <div>
+            <p className="text-sm text-white/50 mb-3">Box Color</p>
 
-          {/* TITLE */}
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold tracking-tight leading-tight">
-            {title}
-          </h1>
+            <div className="flex gap-3 flex-wrap">
+              {["#6366f1", "#ec4899", "#10b981", "#f59e0b", "#111111"].map(
+                (c) => (
+                  <button
+                    key={c}
+                    onClick={() => setBoxColor(c)}
+                    className={`w-10 h-10 rounded-full border-2 ${
+                      boxColor === c ? "border-white" : "border-transparent"
+                    }`}
+                    style={{ background: c }}
+                  />
+                ),
+              )}
+            </div>
+          </div>
 
-          {/* SUBTITLE */}
-          <p className="text-base md:text-lg text-gray-400 max-w-md mx-auto md:mx-0">
-            {subtitle}
-          </p>
+          {/* SIZE CONTROLS */}
+          <div>
+            <label>Width: {width.toFixed(1)}</label>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              step="0.1"
+              value={width}
+              onChange={(e) => setWidth(parseFloat(e.target.value))}
+              className="w-full"
+            />
+          </div>
+
+          <div>
+            <label>Height: {height.toFixed(1)}</label>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              step="0.1"
+              value={height}
+              onChange={(e) => setHeight(parseFloat(e.target.value))}
+              className="w-full"
+            />
+          </div>
+
+          <div>
+            <label>Depth: {depth.toFixed(1)}</label>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              step="0.1"
+              value={depth}
+              onChange={(e) => setDepth(parseFloat(e.target.value))}
+              className="w-full"
+            />
+          </div>
         </div>
 
-        {/* 3D BOX */}
-        <div className="w-full h-[280px] sm:h-[350px] md:h-[500px] rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl">
-          <Canvas dpr={[1, 1.5]}>
-            <ambientLight intensity={0.6} />
+        {/* 3D VIEW */}
+        <div className="h-[400px] md:h-[550px] rounded-3xl bg-white/5 border border-white/10 overflow-hidden">
+          <Canvas>
+            <ambientLight intensity={0.7} />
             <directionalLight position={[3, 3, 3]} intensity={1.2} />
-            <CameraRig scroll={useScroll().scrollYProgress} />
-            <Box color={color} />
+            <directionalLight position={[-3, -3, -3]} intensity={0.5} />
+
+            <Box
+              width={width}
+              height={height}
+              depth={depth}
+              boxColor={boxColor}
+              text={text}
+              textColor={textColor}
+            />
+
             <OrbitControls enableZoom={false} />
           </Canvas>
         </div>
