@@ -6,6 +6,7 @@ import Contact from "@/components/Contact";
 import Clients from "@/components/Clients";
 import About from "@/components/About";
 import BoxCustomizer3D from "@/components/BoxCustomizer3D";
+import PackagingStory from "@/components/PackagingStory";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <BoxCustomizer3D />
       <About />
       <Services />
+      <PackagingStory />
       <Portfolio />
       <Contact />
     </>
