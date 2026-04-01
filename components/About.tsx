@@ -124,9 +124,6 @@ function InteractiveImage() {
       whileHover={{ scale: 1.04 }}
       className="relative group"
     >
-      {/* Glow */}
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-blue-500/20 to-purple-500/20 blur-2xl opacity-40 group-hover:opacity-70 transition" />
-
       {/* Image */}
       <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
         <Image
@@ -139,23 +136,6 @@ function InteractiveImage() {
       </div>
 
       {/* Spotlight */}
-      <div
-        className="absolute inset-0 pointer-events-none rounded-3xl"
-        onMouseMove={(e) => {
-          const rect = ref.current?.getBoundingClientRect();
-          if (!rect) return;
-
-          const x = ((e.clientX - rect.left) / rect.width) * 100;
-          const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-          ref.current?.style.setProperty("--x", `${x}%`);
-          ref.current?.style.setProperty("--y", `${y}%`);
-        }}
-        style={{
-          background:
-            "radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.12), transparent 40%)",
-        }}
-      />
 
       {/* Shine */}
       <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
