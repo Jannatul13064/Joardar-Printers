@@ -1,10 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { FaSearchPlus } from "react-icons/fa";
+import { motion, Variants } from "framer-motion";
 
-const portfolioItems = [
+/* TYPE */
+type PortfolioItem = {
+  id: number;
+  src: string;
+  title: string;
+};
+
+const portfolioItems: PortfolioItem[] = [
   { id: 1, src: "/pack/design1.jpg", title: "Luxury Box" },
   { id: 2, src: "/pack/design2.jpg", title: "Eco Packaging" },
   { id: 3, src: "/pack/design1.jpg", title: "Creative Labels" },
@@ -13,66 +19,66 @@ const portfolioItems = [
   { id: 6, src: "/pack/design1.jpg", title: "Branded Boxes" },
 ];
 
+/* 🎬 APPLE-STYLE VARIANTS */
+const cardVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 80,
+    scale: 0.95,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.9,
+      ease: [0.22, 1, 0.36, 1], // ✨ Apple-like easing
+    },
+  },
+};
+
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-24 px-6 md:px-12">
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl text-center mb-16 font-extrabold text-white">
-        Our Packaging Designs
+    <section className="py-24 px-6 md:px-12 bg-black text-white">
+      {/* TITLE */}
+      <h2 className="text-4xl md:text-6xl font-extrabold text-center mb-20">
+        Packageing Design
       </h2>
 
-      <motion.div
-        className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={{
-          visible: { transition: { staggerChildren: 0.15 } },
-        }}
-      >
-        {portfolioItems.map((item) => (
+      {/* GRID */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+        {portfolioItems.map((item, index) => (
           <motion.div
             key={item.id}
-            className="relative rounded-3xl overflow-hidden shadow-2xl cursor-pointer group"
-            variants={{
-              hidden: { opacity: 0, y: 60, scale: 0.9, rotate: -2 },
-              visible: { opacity: 1, y: 0, scale: 1, rotate: 0 },
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{
+              delay: index * 0.08,
             }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            whileHover={{
-              scale: 1.1,
-              rotate: [0, -5, 5, 0], // playful tilt animation
-              y: [0, -10, 5, 0], // slight bounce
-              transition: { duration: 0.6, ease: "easeInOut" },
-            }}
+            className="relative rounded-3xl overflow-hidden group cursor-pointer shadow-2xl"
           >
-            {/* Image */}
+            {/* IMAGE */}
             <Image
               src={item.src}
-              width={500}
-              height={400}
               alt={item.title}
-              className="w-full h-auto object-cover rounded-3xl"
+              width={800}
+              height={600}
+              className="w-full h-[320px] md:h-[380px] object-cover 
+              transition duration-700 group-hover:scale-110"
             />
 
-            {/* Cartoon hover overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col items-center justify-center gap-2"
-            >
-              <motion.div
-                whileHover={{ scale: 1.3, rotate: [0, 15, -15, 0] }}
-                className="flex flex-col items-center gap-2"
-              >
-                <FaSearchPlus className="text-white text-3xl sm:text-4xl" />
-                <p className="text-white text-lg sm:text-xl font-bold text-center">
-                  {item.title}
-                </p>
-              </motion.div>
-            </motion.div>
+            {/* OVERLAY */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+              <h3 className="text-lg md:text-2xl font-bold">{item.title}</h3>
+            </div>
+
+            {/* GLOW */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-blue-500/10 blur-2xl" />
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }

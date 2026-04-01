@@ -27,7 +27,7 @@ export default function Navbar() {
             Services
           </Link>
           <Link href="/portfolio" className="hover:text-blue-600">
-            Portfolio
+            Packaging Design
           </Link>
           <Link href="/contact" className="hover:text-blue-600">
             Contact
@@ -76,7 +76,7 @@ export default function Navbar() {
               className="text-black hover:text-blue-600"
               onClick={() => setOpen(false)}
             >
-              Portfolio
+              Packaging Design
             </Link>
 
             <Link
